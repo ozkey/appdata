@@ -1,0 +1,40 @@
+{
+  "name": "redstone-form",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-jest": "^21.2.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.0",
+    "jest-cli": "^22.4.2"
+  },
+  "dependencies": {
+    "cross-env": "^5.1.4",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "lodash.get": "^4.4.2",
+    "lodash.has": "^4.5.2"
+  },
+  "scripts": {
+    "start": "cross-env PORT=8787 react-scripts start",
+    "build": "react-scripts build",
+    "test_old": "react-scripts test --env=jsdom",
+    "test": "cross-env NODE_ENV=unit-test jest --no-cache",
+    "eject": "react-scripts eject",
+    "comment:============================= BUILD TOOLS  =============================": "",
+    "clean": "rm -rf publish",
+    "cleanWindows": "rmdir publish /s /q",
+    "build:es2015": "babel --presets es2015,stage-0 --plugins transform-react-jsx -d publish src/redstone-form"
+  }
+}
