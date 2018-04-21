@@ -6,7 +6,7 @@ import { numberNormalizer,
   numberNormalizerNoLeadingZero,
   numberNormalizerAsString } from './numberNormalizer'
 
-export default {
+export const normalizer = {
   nameNormalizer,
   normalizeEmail,
   booleanNormalizer,
