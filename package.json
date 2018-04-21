@@ -1,7 +1,8 @@
 {
-  "name": "redstone-form",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@redstone/redstone-form",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Ozkey",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^21.2.0",
