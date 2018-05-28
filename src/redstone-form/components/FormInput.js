@@ -207,6 +207,13 @@ class FormInput extends Component {
       values,
       path,
       name,
+      inlineValidation,
+      onBlurValidation,
+      submitValidation,
+      dispatch,
+      formData,
+      formComponent,
+
       ...childProps
     } = this.props
 
