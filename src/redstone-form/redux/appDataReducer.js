@@ -15,8 +15,9 @@ import {
 
 import { removeUndefinedParents } from './utils/removeUndefinedParents'
 
-const initState = {
+export const initState = {
   value: {},
+  appData:{},
   inlineError: {},
   onBlurError: {},
   onBlurErrorWorkingData: {},

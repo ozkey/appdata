@@ -6,8 +6,11 @@
 # testing
 /coverage
 
-# production
+# code to be published to NPM
 /publish
+
+# boiler plate build from react
+/build
 
 # misc
 .idea
