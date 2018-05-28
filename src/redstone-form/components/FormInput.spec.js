@@ -29,6 +29,12 @@ describe(' form input ', () => {
 
     console.log(wrapper)
     expect(wrapper.find('input')).toHaveLength(1)
+    // wrapper.find('input').prop('onChange')({ target: {value: 'myval'} })
+    // wrapper.find('input').simulate('change', { target: { value: '7' } })
+    wrapper.find('input').props().onChange({})
+    wrapper.update()
+
+    expect(realStore.getState().appData).toEqual({})
   })
 
 })
