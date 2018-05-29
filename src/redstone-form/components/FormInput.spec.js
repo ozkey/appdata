@@ -27,8 +27,8 @@ describe(' form input ', () => {
         theName: 'myval'
       }
     };
-    const instance = wrapper.find('FormInput').instance()
     expect(wrapper.find('input')).toHaveLength(1)
+    // const instance = wrapper.find('FormInput').instance()
     // instance.onChangeInput({ target: { value: 'myval' } }) // This also works
     wrapper.find('input').simulate('change', { target: { value: 'myval' } })
     wrapper.update()
