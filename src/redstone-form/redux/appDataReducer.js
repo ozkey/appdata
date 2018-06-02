@@ -12,12 +12,11 @@ import {
   SUBMIT_ERROR_FOR_DISPLAY,
   SUBMIT_ERROR_WD
 } from './appDataActions'
-
-import { removeUndefinedParents } from './utils/removeUndefinedParents'
+import { cleanupEmptyParentsRecursively } from './utils/cleanupEmptyParentsRecursively'
 
 export const initState = {
   value: {},
-  appData:{},
+  appData: {},
   inlineError: {},
   onBlurError: {},
   onBlurErrorWorkingData: {},
@@ -32,7 +31,7 @@ const setData = (action, state) => {
   const fullPath = action.path === undefined ? `${action.name}` : `${action.path}.${action.name}`
   if (action.value === undefined) {
     const newStateAfterDelete = dotProp.delete(state, fullPath)
-    return removeUndefinedParents(newStateAfterDelete, fullPath)
+    return cleanupEmptyParentsRecursively(newStateAfterDelete, fullPath)
   }
 
   return dotProp.set(state, fullPath, action.value)
@@ -49,23 +48,23 @@ export default function FormDataReducer(state = initState, action) {
     case SUBMIT_ERROR_WD:
     case SUBMIT_ERROR:
     case NORMALIZE_AND_VALIDATE:
-    {
-      return setData(action, state)
-    }
+      {
+        return setData(action, state)
+      }
     case SUBMIT_ERROR_FOR_DISPLAY:
-    {
-      return {
-        ...state,
-        submitError: state.submitErrorWorkingData
+      {
+        return {
+          ...state,
+          submitError: state.submitErrorWorkingData
+        }
       }
-    }
     case ONBLUR_ERROR_FOR_DISPLAY:
-    {
-      return {
-        ...state,
-        onBlurError: state.onBlurErrorWorkingData
+      {
+        return {
+          ...state,
+          onBlurError: state.onBlurErrorWorkingData
+        }
       }
-    }
     default:
       return state
   }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from '../redux/appDataReducer'
-import { initState } from '../redux/appDataReducer'
-import FormInput from './FormInput'
-import { Input } from 'antd/lib/index'
+import Input from 'antd/lib/input'
 import { mount } from 'enzyme';
+
+import rootReducer, { initState } from '../redux/appDataReducer'
+import FormInput from './FormInput'
 
 const realStore = createStore(rootReducer, initState)
 
