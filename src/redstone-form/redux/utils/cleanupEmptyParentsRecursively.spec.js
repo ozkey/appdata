@@ -1,11 +1,9 @@
-import React from 'react'
 import { createStore } from 'redux'
 
 import rootReducer, { initState } from '../../redux/appDataReducer'
 import { changeValue } from '../appDataActions'
 
 const realStore = createStore(rootReducer, initState)
-
 
 describe(' form input ', () => {
   it('should cean up empty parents from state', () => {
@@ -15,7 +13,6 @@ describe(' form input ', () => {
         testParam: 'testValue'
       }
     })
-
     realStore.dispatch(changeValue('test', 'testParam', undefined))
     expect(realStore.getState().value).toEqual({})
   })
@@ -28,7 +25,6 @@ describe(' form input ', () => {
         testParam2: 'testValue'
       }
     })
-
     realStore.dispatch(changeValue('test', 'testParam2', undefined))
     expect(realStore.getState().value).toEqual({
       test: {
@@ -49,7 +45,6 @@ describe(' form input ', () => {
         testParam: 'testValue'
       }
     })
-
     realStore.dispatch(changeValue('test', 'testParam2', undefined))
     realStore.dispatch(changeValue('test2', 'testParam', undefined))
     expect(realStore.getState().value).toEqual({
