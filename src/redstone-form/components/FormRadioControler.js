@@ -1,0 +1,70 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+
+import FormInput from './FormInputControler'
+
+class FormRadioControler extends Component {
+  render() {
+    return (
+      <FormInput
+        {...this.props}
+        type="radio"
+      />
+    )
+  }
+}
+
+FormRadioControler.propTypes = {
+  name: PropTypes.string.isRequired,
+  path: PropTypes.string,
+  formComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object
+  ]).isRequired,
+  values: PropTypes.array,
+  dispatch: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+  onSelect: PropTypes.func,
+  type: PropTypes.string, // checkbox or radio or select
+  formData: PropTypes.object.isRequired,
+  disabled: PropTypes.bool,
+  submitValidation: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array
+  ]),
+  inlineValidation: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array
+  ]),
+  onBlurValidation: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array
+  ]),
+  normalizer: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array
+  ])
+}
+
+FormRadioControler.defaultProps = {
+  path: undefined,
+  inlineValidation: undefined,
+  onBlurValidation: undefined,
+  submitValidation: undefined,
+  normalizer: undefined,
+  values: undefined,
+  type: undefined,
+  onChange: () => {},
+  onSelect: undefined,
+  disabled: false
+}
+
+function mapStateToProps(store) {
+  return {
+    formData: store.appData
+  }
+}
+
+export default connect(mapStateToProps)(FormRadioControler)

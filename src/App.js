@@ -2,89 +2,67 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { DatePicker, Button, Radio, Input ,Row, Col, Card, Layout, Menu} from 'antd'
+
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+
+//radio todo:
+// https://codesandbox.io/s/pp99j7zq8q
+
 import 'antd/dist/antd.css'
 import './App.css'
 import { changeStore } from './redstone-form/redux/appDataActions'
-import FormInput from './redstone-form/components/FormInput'
+import {numberNormalizer} from './redstone-form/normalizers/numberNormalizer'
+import FormInput from './redstone-form/components/FormInputControler'
+import FormRadio from './redstone-form/components/FormRadioControler'
 
-import FormRadio from './redstone-form/components/FormRadio'
 
-const {Header, Content, Footer, Sider} = Layout
-const RadioGroup = Radio.Group
 
 class App extends Component {
   render() {
     return (
 
-      <Layout>
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
-        <Layout>
-          <Content>
-            <Row gutter={16}>
-              <Col span={1} />
-              <Col span={11} >
-                <Card>
-                  <DatePicker />
-                  Input:
-                  <FormInput
-                    name="theName"
-                    path="thePath"
-                    formComponent={Input}
-                  />
-                  <br />
-                  Radio:
-                  <br />
-                  <FormRadio
-                    name="myRadio"
-                    path="thePath"
-                    formComponent={RadioGroup}
-                    values={[
-                      { label: 'one', value: 1, disabled: false },
-                      { label: 'two', value: 2, disabled: false }
-                    ]}
-                  />
-                  Input:
-                  <br />
-                  <Input value={"sss"} />
-                  <Button onClick={() => {
-                    this.props.dispatch(changeStore('path', 'name', 'myValue'))
-                  }}
-                  >
-                    Hello world!
-                  </Button>
-                  <RadioGroup
-                    name="testRadio"
-                    options={[
-                      { label: '1', value: 1, disabled: false },
-                      { label: '2', value: 2, disabled: false }
-                    ]}
-                  />
-                </Card>
-              </Col>
-              <Col span={1} />
-              <Col span={11} >
-                TODO DISPLAY DATA
-              </Col>
-            </Row>
-
-          </Content>
-
-        </Layout>
-        <Footer>footer</Footer>
-      </Layout>
+      <div>
+        Input:
+        <FormInput
+          name="theName"
+          path="thePath"
+          normalizer={numberNormalizer}
+          inlineValidation={(e,v)=>{ return 'InlineError'}}
+          formComponent={Input}
+        />
+        <br />
+        {/*Radio:*/}
+        {/*<br />*/}
+        {/*<FormRadio*/}
+        {/*name="myRadio"*/}
+        {/*path="thePath"*/}
+        {/*formComponent={RadioGroup}*/}
+        {/*values={[*/}
+        {/*{ label: 'one', value: 1, disabled: false },*/}
+        {/*{ label: 'two', value: 2, disabled: false }*/}
+        {/*]}*/}
+        {/*/>*/}
+        {/*Input:*/}
+        {/*<br />*/}
+        {/*<Input value={"sss"} />*/}
+        <Button onClick={() => {
+          this.props.dispatch(changeStore('path', 'name', 'myValue'))
+        }}
+        >
+          Hello world!
+        </Button>
+        {/*<RadioGroup*/}
+        {/*name="testRadio"*/}
+        {/*options={[*/}
+        {/*{ label: '1', value: 1, disabled: false },*/}
+        {/*{ label: '2', value: 2, disabled: false }*/}
+        {/*]}*/}
+        {/*/>*/}
+      </div>
     )
   }
 }

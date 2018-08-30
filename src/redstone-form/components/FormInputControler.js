@@ -3,20 +3,18 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 
-import FormInput from './FormInput'
+import FormBaseInput from './Base/FormBaseInput'
 
-class FormRadio extends Component {
-  render() {
-    return (
-      <FormInput
-        {...this.props}
-        type="radio"
-      />
-    )
-  }
+const FormInputControler = (props) => {
+  return (
+    <FormBaseInput
+      {...props}
+      type="text"
+    />
+  )
 }
 
-FormRadio.propTypes = {
+FormInputControler.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string,
   formComponent: PropTypes.oneOfType([
@@ -48,7 +46,7 @@ FormRadio.propTypes = {
   ])
 }
 
-FormRadio.defaultProps = {
+FormInputControler.defaultProps = {
   path: undefined,
   inlineValidation: undefined,
   onBlurValidation: undefined,
@@ -67,4 +65,4 @@ function mapStateToProps(store) {
   }
 }
 
-export default connect(mapStateToProps)(FormRadio)
+export default connect(mapStateToProps)(FormInputControler)

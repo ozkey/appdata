@@ -11,10 +11,10 @@ import {
   setOnBlurErrorForDisplay,
   changeSubmitErrorWorkingData,
   changeSubmitError
-} from '../redux/appDataActions'
+} from '../../redux/appDataActions'
 
 // utils
-import { normalize, getValue, getAppValue, getDisplayError } from '../utils/formDataUtils'
+import { normalize, getValue, getAppValue, getDisplayError } from '../../utils/formDataUtils'
 
 class FormInput extends Component {
   constructor(props) {
