@@ -4,19 +4,18 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+
+import FormInput from './components/FormInput'
 
 //radio todo:
 // https://codesandbox.io/s/pp99j7zq8q
 
 import 'antd/dist/antd.css'
 import './App.css'
-import { changeStore } from './redstone-form/redux/appDataActions'
+import { changeStore, setSubmitErrorForDisplay } from './redstone-form/redux/appDataActions'
 import {numberNormalizer} from './redstone-form/normalizers/numberNormalizer'
-import FormInput from './redstone-form/components/FormInputControler'
+import FormInputControler from './redstone-form/components/FormInputControler'
 import FormRadio from './redstone-form/components/FormRadioControler'
 
 
@@ -26,13 +25,13 @@ class App extends Component {
     return (
 
       <div>
-        Input:
-        <FormInput
+        App Input:
+        <FormInputControler
           name="theName"
-          path="thePath"
+          path="thePath2"
           normalizer={numberNormalizer}
-          inlineValidation={(e,v)=>{ return 'InlineError'}}
-          formComponent={Input}
+          inlineValidation={(v)=>{ return  v < 11 ? 'must be greater than 11' : undefined}}
+          formComponent={FormInput}
         />
         <br />
         {/*Radio:*/}
@@ -53,7 +52,21 @@ class App extends Component {
           this.props.dispatch(changeStore('path', 'name', 'myValue'))
         }}
         >
-          Hello world!
+         x
+        </Button>
+
+        <Button onClick={() => {
+          this.props.dispatch(changeStore('path', 'name', 'not myValue'))
+        }}
+        >
+          y
+        </Button>
+
+        <Button onClick={() => {
+          this.props.dispatch(setSubmitErrorForDisplay())
+        }}
+        >
+          setSubmitErrorForDisplay!
         </Button>
         {/*<RadioGroup*/}
         {/*name="testRadio"*/}
