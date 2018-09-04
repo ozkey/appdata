@@ -8,13 +8,12 @@ import FormControl from '@material-ui/core/FormControl'
 
 
 const FormInput = (props) => {
-  const {name, id, value, onChange,errBoolean, err, errorText, options, disabled} = props
+  const {name, id, value, onChange, errorBoolean, errorText, options, disabled} = props
   console.log(props)
   return (
-    <FormControl disabled={disabled} error={errBoolean} >
+    <FormControl disabled={disabled} error={errorBoolean} >
       <InputLabel htmlFor={name}>Name</InputLabel>
       <Input id={id} value={value} onChange={onChange} disabled={disabled} />
-      <FormHelperText id="name-helper-text">{err}</FormHelperText>
       <FormHelperText id="name-helper-text">{errorText}</FormHelperText>
     </FormControl>
   )

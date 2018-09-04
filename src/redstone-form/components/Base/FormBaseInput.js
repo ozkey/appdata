@@ -237,8 +237,8 @@ class FormInput extends Component {
       value = value === undefined ? '' : value.toString()
       injectProps.value = value
     }
-    injectProps.err = this.props.disabled ? undefined : getDisplayError(this.props.formData, id)
-    injectProps.errBoolean = (typeof injectProps.err === 'string' && injectProps.err.length > 0)
+    injectProps.errorText = this.props.disabled ? undefined : getDisplayError(this.props.formData, id)
+    injectProps.errorBoolean = (typeof injectProps.errorText === 'string' && injectProps.errorText.length > 0)
     return (
       <this.props.formComponent
         {...childProps}
