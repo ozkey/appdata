@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import appDataReducer from '../redstone-form/redux/appDataReducer'
+import appDataReducer from '../../redstone-form/redux/appDataReducer'
 
 const appReducer = combineReducers({
   appData: appDataReducer

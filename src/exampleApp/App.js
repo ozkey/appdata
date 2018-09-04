@@ -3,22 +3,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
-
+import Button from '@material-ui/core/Button'
 import FormInput from './components/FormInput'
 
 //radio todo:
 // https://codesandbox.io/s/pp99j7zq8q
 
-import 'antd/dist/antd.css'
-import './App.css'
-import { changeStore, setSubmitErrorForDisplay } from './redstone-form/redux/appDataActions'
-import {numberNormalizer} from './redstone-form/normalizers/numberNormalizer'
-import FormInputControler from './redstone-form/components/FormInputControler'
-import FormRadio from './redstone-form/components/FormRadioControler'
-
-
+import { changeStore, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
+import {numberNormalizer} from '../redstone-form/normalizers/numberNormalizer'
+import FormInputControler from '../redstone-form/components/FormInputControler'
 
 class App extends Component {
   render() {
