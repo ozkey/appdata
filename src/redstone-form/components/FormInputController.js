@@ -1,22 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 
-import FormInput from './FormInputControler'
+import FormBaseInput from './BaseInput/FormBaseInput'
 
-class FormRadioControler extends Component {
-  render() {
-    return (
-      <FormInput
-        {...this.props}
-        type="radio"
-      />
-    )
-  }
+const FormInputController = (props) => {
+  return (
+    <FormBaseInput
+      {...props}
+      type="text"
+    />
+  )
 }
 
-FormRadioControler.propTypes = {
+FormInputController.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string,
   formComponent: PropTypes.oneOfType([
@@ -48,7 +46,7 @@ FormRadioControler.propTypes = {
   ])
 }
 
-FormRadioControler.defaultProps = {
+FormInputController.defaultProps = {
   path: undefined,
   inlineValidation: undefined,
   onBlurValidation: undefined,
@@ -67,4 +65,4 @@ function mapStateToProps(store) {
   }
 }
 
-export default connect(mapStateToProps)(FormRadioControler)
+export default connect(mapStateToProps)(FormInputController)

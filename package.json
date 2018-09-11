@@ -41,11 +41,14 @@
     "build": "react-scripts build",
     "testWatch": "react-scripts test --env=jsdom",
     "test": "cross-env NODE_ENV=unit-test jest --no-cache",
-    "comment:============================= BUILD TOOLS  =============================": "",
+    "============================= BUILD TOOLS  =============================": "",
     "cleanPublish": "rm -rf publish",
     "cleanPublisWindows": "rmdir publish /s /q",
     "cleanBuildWindows": "rmdir build /s /q",
-    "build:es2015": "babel --presets es2015,stage-0 --plugins transform-react-jsx -d publish src/redstone-form"
+    "build:es2015": "babel --presets es2015,stage-0 --plugins transform-react-jsx -d publish src/redstone-form",
+    "============================= OTHER TOOLS  =============================": "",
+    "killWin": "Taskkill /IM node.exe /F",
+    "============================= END  =============================": ""
   },
   "jest": {
     "verbose": false,

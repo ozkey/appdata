@@ -5,7 +5,7 @@ import Input from 'antd/lib/input'
 import { mount } from 'enzyme';
 
 import rootReducer, { initState } from '../../redux/appDataReducer'
-import FormInput from '../FormInputControler'
+import FormInput from '../FormInputController'
 
 const realStore = createStore(rootReducer, initState)
 

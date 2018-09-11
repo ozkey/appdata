@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 
-import FormBaseInput from './Base/FormBaseInput'
+import FormBaseInput from './BaseInput/FormBaseInput'
 
-const FormInputControler = (props) => {
+const FormInputController = (props) => {
   return (
     <FormBaseInput
       {...props}
-      type="text"
+      type="radio"
     />
   )
 }
 
-FormInputControler.propTypes = {
+FormInputController.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string,
   formComponent: PropTypes.oneOfType([
@@ -46,7 +46,7 @@ FormInputControler.propTypes = {
   ])
 }
 
-FormInputControler.defaultProps = {
+FormInputController.defaultProps = {
   path: undefined,
   inlineValidation: undefined,
   onBlurValidation: undefined,
@@ -65,4 +65,4 @@ function mapStateToProps(store) {
   }
 }
 
-export default connect(mapStateToProps)(FormInputControler)
+export default connect(mapStateToProps)(FormInputController)

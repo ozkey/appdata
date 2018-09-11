@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from 'react'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
 
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 const FormInput = (props) => {
-  const {name, id, value, onChange, errorBoolean, errorText, options, disabled} = props
-  console.log(props)
+  const {name, id, value, onChange, errorBoolean, errorText, disabled, label} = props
   return (
     <FormControl disabled={disabled} error={errorBoolean} >
-      <InputLabel htmlFor={name}>Name</InputLabel>
+      <InputLabel htmlFor={name}>{label}</InputLabel>
       <Input id={id} value={value} onChange={onChange} disabled={disabled} />
       <FormHelperText id="name-helper-text">{errorText}</FormHelperText>
     </FormControl>
@@ -21,15 +20,21 @@ const FormInput = (props) => {
 
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  errorText: PropTypes.string,
+  errorBoolean: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
-  // values: PropTypes.array,
   onChange: PropTypes.func.isRequired,
-  // onSelect: PropTypes.func,
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 
 FormInput.defaultProps = {
-
+  errorText: undefined,
+  value: undefined
 }
 
 function mapStateToProps(store) {
