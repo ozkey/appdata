@@ -13,6 +13,8 @@ import { setSubmitErrorForDisplay } from '../../redstone-form/redux/appDataActio
 import FormInput from '../components/FormInput'
 import { mustBeDefined } from '../../redstone-form/validators/mustBeDefined'
 import { greaterThan } from '../../redstone-form/validators/greaterThan'
+import DataController from '../../redstone-form/components/DataController'
+
 
 const CardsFormRadio = () => {
   return (
@@ -28,13 +30,13 @@ const CardsFormRadio = () => {
             path="thePath1"
             label="Enter a number"
             normalizer={numberNormalizer}
-            inlineValidation={[(v) => mustBeDefined(v, 'must be defined'), (v)=> greaterThan(v, 10, 'must be greater than 10')]}
+            submitValidation={[(v) => mustBeDefined(v, 'must be defined'), (v)=> greaterThan(v, 10, 'must be greater than 10')]}
             formComponent={FormInput}
           />
         </CardContent>
         <CardActions>
           <Button onClick={() => {
-            this.props.dispatch(setSubmitErrorForDisplay())
+            DataController.setSubmitErrorForDisplay()
           }}
           >
             setSubmitErrorForDisplay!

@@ -15,10 +15,12 @@ import { changeStore, setSubmitErrorForDisplay } from '../redstone-form/redux/ap
 import CardsFormRadio from './miniExamples/CardsFormRadio'
 import CardsFormInput from './miniExamples/CardsFormInput'
 
+import DataController from '../redstone-form/components/DataController'
+
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <DataController>
         <CssBaseline />
         <AppBar position="absolute" color="default">
           <Toolbar>
@@ -67,7 +69,7 @@ class App extends Component {
         >
           setSubmitErrorForDisplay!
         </Button>
-      </Fragment >
+      </DataController >
     )
   }
 }
