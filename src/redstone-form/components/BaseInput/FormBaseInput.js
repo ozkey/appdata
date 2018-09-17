@@ -91,6 +91,7 @@ class FormInput extends Component {
     this.removeErrors(this.props.path, this.props.name)
   }
   onChangeInput(e, value) {
+
     let inputValue
     if (e && e.target && e.target.value) {
       inputValue = e.target.value

@@ -27,7 +27,7 @@ const CardsFormRadio = () => {
           </Typography>
 
           <FormRadioController
-            name="gender"
+            name="radio"
             path="aRadioExample"
             label="Select a value:"
             values={[
