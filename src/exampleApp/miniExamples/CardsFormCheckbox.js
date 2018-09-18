@@ -6,10 +6,11 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
-import FormRadioController from '../../redstone-form/components/FormRadioController'
+import FormCheckboxController from '../../redstone-form/components/FormCheckboxController'
 
-import FormRadio from '../components/FormRadio'
+import FormCheckbox from '../components/FormCheckbox'
 import { numberNormalizer } from '../../redstone-form/normalizers/numberNormalizer'
+
 
 import { mustBeDefined } from '../../redstone-form/validators/mustBeDefined'
 import { greaterThan } from '../../redstone-form/validators/greaterThan'
@@ -25,9 +26,9 @@ const CardsFormRadio = () => {
             Radio example
           </Typography>
 
-          <FormRadioController
-            name="radio"
-            path="aRadioExample"
+          <FormCheckboxController
+            name="Checkbox"
+            path="aCheckboxExample"
             label="Select a value:"
             values={[
               { label: '5', value: 5, disabled: false },
@@ -36,9 +37,9 @@ const CardsFormRadio = () => {
               { label: '30', value: 30, disabled: false },
               { label: '40', value: 40, disabled: false }
             ]}
-            normalizer={numberNormalizer}
+            // normalizer={numberNormalizer}
             submitValidation={[(v) => mustBeDefined(v, 'Mandatory field'), (v) => greaterThan(v, 10, 'must be greater than 10')]}
-            formComponent={FormRadio}
+            formComponent={FormCheckbox}
           />
         </CardContent>
         <CardActions>

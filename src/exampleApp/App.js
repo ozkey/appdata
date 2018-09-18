@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography'
 
 import { changeStore, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
 
+import CardsFormCheckbox from './miniExamples/CardsFormCheckbox'
 import CardsFormRadio from './miniExamples/CardsFormRadio'
 import CardsFormInput from './miniExamples/CardsFormInput'
 
@@ -40,6 +41,8 @@ class App extends Component {
               <Grid container justify="center" spacing={16}>
                 <CardsFormInput />
                 <CardsFormRadio />
+                <CardsFormCheckbox />
+
               </Grid>
             </Grid>
           </Grid>

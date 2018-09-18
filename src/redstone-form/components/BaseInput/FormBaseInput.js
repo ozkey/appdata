@@ -16,6 +16,8 @@ import {
 // utils
 import { normalize, getValue, getAppValue, getDisplayError } from '../../utils/formDataUtils'
 
+import { checkBoxChange } from './utils/checkbox'
+
 class FormInput extends Component {
   constructor(props) {
     super(props)
@@ -25,6 +27,7 @@ class FormInput extends Component {
     this.getId = this.getId.bind(this)
     this.inputValue = undefined
     this.lastNormalizeAndValidate = getAppValue(this.props.formData, 'normalizeAndValidate')
+    this.checkBoxChange = (e) => checkBoxChange(e, this)
   }
 
   componentDidMount() {
@@ -90,15 +93,21 @@ class FormInput extends Component {
   componentWillUnmount() {
     this.removeErrors(this.props.path, this.props.name)
   }
+
+
   onChangeInput(e, value) {
 
     let inputValue
     if (e && e.target && e.target.value) {
       inputValue = e.target.value
     }
-    if (value !== undefined) {
+
+    if (this.props.type === 'checkbox') inputValue = this.checkBoxChange(inputValue)
+    else if (value !== undefined) {
       inputValue = value
     }
+
+
     inputValue = normalize(inputValue, this.props.normalizer)
 
     this.props.dispatch(changeValue(this.props.path, this.props.name, inputValue))
@@ -226,12 +235,14 @@ class FormInput extends Component {
       onChange: this.onChangeInput,
       onSelect: this.onSelect
     }
+
     if (this.props.type === 'radio' || this.props.type === 'select') {
       injectProps.options = values
       injectProps.values = values
       injectProps.value = getValue(this.props.formData, id)
     } else if (this.props.type === 'checkbox') {
       injectProps.values = values
+      injectProps.options = values
       injectProps.value = getValue(this.props.formData, id) || []
     } else {
       let value = getValue(this.props.formData, id)

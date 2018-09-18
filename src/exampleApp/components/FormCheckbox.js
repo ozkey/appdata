@@ -6,7 +6,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import Radio from '@material-ui/core/Radio'
+import Checkbox from '@material-ui/core/Checkbox'
 
 
 const FormInput = (props) => {
@@ -16,9 +16,13 @@ const FormInput = (props) => {
     return (
       <FormControlLabel
         key={id}
+
+        onChange={onChange}
+
+        
         value={`${option.value}`} // convert to string - material component expects string only
         disabled={disabled || option.disabled}
-        control={<Radio />}
+        control={<Checkbox />}
         label={option.label}
         name={name}
       />
@@ -28,14 +32,7 @@ const FormInput = (props) => {
   return (
     <FormControl disabled={disabled} error={errorBoolean} >
       <FormLabel component="legend">{label}</FormLabel>
-      <RadioGroup
-        name={name}
-        value={`${value}`} // convert to string - material component expects string only
-        onChange={onChange}
-      >
         {listItems}
-      </RadioGroup>
-
       <FormHelperText id="name-helper-text">{errorText}</FormHelperText>
     </FormControl>
   )
