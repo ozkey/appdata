@@ -26,7 +26,7 @@ FormInputController.propTypes = {
   onChange: PropTypes.func,
   onSelect: PropTypes.func,
   type: PropTypes.string, // checkbox or radio or select
-  formData: PropTypes.object.isRequired,
+  appData: PropTypes.object.isRequired,
   disabled: PropTypes.bool,
   submitValidation: PropTypes.oneOfType([
     PropTypes.func,
@@ -61,7 +61,7 @@ FormInputController.defaultProps = {
 
 function mapStateToProps(store) {
   return {
-    formData: store.appData
+    appData: store.appData
   }
 }
 

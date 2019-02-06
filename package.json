@@ -39,8 +39,9 @@
   "scripts": {
     "start": "cross-env PORT=8787 react-scripts start",
     "build": "react-scripts build",
-    "testWatch": "react-scripts test --env=jsdom",
     "test": "cross-env NODE_ENV=unit-test jest --no-cache",
+    "test-watch": "cross-env NODE_ENV=unit-test jest --no-cache --watch",
+    "test-watchAll": "cross-env NODE_ENV=unit-test jest --no-cache --watchAll",
     "============================= BUILD TOOLS  =============================": "",
     "cleanPublish": "rm -rf publish",
     "cleanPublisWindows": "rmdir publish /s /q",

@@ -5,10 +5,9 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
 
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 const FormInput = (props) => {
-  const {name, id, value, onChange, errorBoolean, errorText, disabled, label} = props
+  const { name, id, value, onChange, errorBoolean, errorText, disabled, label } = props
   return (
     <FormControl disabled={disabled} error={errorBoolean} >
       <InputLabel htmlFor={name}>{label}</InputLabel>
@@ -37,10 +36,4 @@ FormInput.defaultProps = {
   value: undefined
 }
 
-function mapStateToProps(store) {
-  return {
-    formData: store.appData
-  }
-}
-
-export default connect(mapStateToProps)(FormInput)
+export default (FormInput)

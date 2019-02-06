@@ -1,5 +1,5 @@
 import { normalizer } from '../../normalizers/index'
-import { findError, normalize } from '../formDataUtils'
+import { findError, normalize } from '../appDataUtils'
 
 test('true findError', () => {
   const isInErr = findError({ fieldName: 'err' })

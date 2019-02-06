@@ -14,7 +14,7 @@ import {
 } from '../../redux/appDataActions'
 
 // utils
-import { normalize, getValue, getAppValue, getDisplayError } from '../../utils/formDataUtils'
+import { normalize, getValue, getAppValue, getDisplayError } from '../../utils/appDataUtils'
 
 import { checkBoxChange } from './utils/checkbox'
 
@@ -26,7 +26,7 @@ class FormInput extends Component {
     this.onBlurInput = this.onBlurInput.bind(this)
     this.getId = this.getId.bind(this)
     this.inputValue = undefined
-    this.lastNormalizeAndValidate = getAppValue(this.props.formData, 'normalizeAndValidate')
+    this.lastNormalizeAndValidate = getAppValue(this.props.appData, 'normalizeAndValidate')
     this.checkBoxChange = (e) => checkBoxChange(e, this)
   }
 
@@ -39,11 +39,11 @@ class FormInput extends Component {
     const indexId = this.getIndexId()
     const itemId = this.getItemId()
 
-    const newInputIndex = getValue(nextProps.formData, indexId)
-    const newInputItem = getValue(nextProps.formData, itemId)
+    const newInputIndex = getValue(nextProps.appData, indexId)
+    const newInputItem = getValue(nextProps.appData, itemId)
 
     const { inputValue } = this
-    const normalizeAndValidate = getAppValue(nextProps.formData, 'normalizeAndValidate')
+    const normalizeAndValidate = getAppValue(nextProps.appData, 'normalizeAndValidate')
 
     // if disabled remove errors
     if (this.props.disabled === false && nextProps.disabled === true) {
@@ -52,7 +52,7 @@ class FormInput extends Component {
 
     // if enabled then validate field
     if (this.props.disabled === true && nextProps.disabled === false) {
-      const newInputValue = getValue(nextProps.formData, id)
+      const newInputValue = getValue(nextProps.appData, id)
       this.setValidationInStore(newInputValue, newInputItem, newInputIndex)
     }
 
@@ -69,7 +69,7 @@ class FormInput extends Component {
       }
     } else {
       // has value has changed programmatically?
-      const newInputValue = getValue(nextProps.formData, id)
+      const newInputValue = getValue(nextProps.appData, id)
       let valueHasChanged = inputValue !== newInputValue
 
       if (Array.isArray(inputValue) || Array.isArray(newInputValue)) { // radio and checkbox values are in an array
@@ -96,6 +96,8 @@ class FormInput extends Component {
 
 
   onChangeInput(e, value) {
+
+    console.log(e.target.value)
 
     let inputValue
     if (e && e.target && e.target.value) {
@@ -128,7 +130,7 @@ class FormInput extends Component {
   }
 
   onBlurInput() {
-    this.props.dispatch(setOnBlurErrorForDisplay(this.props.formData.onBlurErrorWorkingData))
+    this.props.dispatch(setOnBlurErrorForDisplay(this.props.appData.onBlurErrorWorkingData))
   }
 
   setValidationInStore(inputValue, inputItem, inputIndex) {
@@ -195,9 +197,9 @@ class FormInput extends Component {
     const id = this.getId()
     const indexId = this.getIndexId()
     const itemId = this.getItemId()
-    const inputValue = getValue(this.props.formData, id)
-    const inputIndex = getValue(this.props.formData, indexId)
-    const inputItem = getValue(this.props.formData, itemId)
+    const inputValue = getValue(this.props.appData, id)
+    const inputIndex = getValue(this.props.appData, indexId)
+    const inputItem = getValue(this.props.appData, itemId)
     if (!this.props.disabled) this.setValidationInStore(inputValue, inputItem, inputIndex)
   }
 
@@ -222,7 +224,7 @@ class FormInput extends Component {
       onBlurValidation,
       submitValidation,
       dispatch,
-      formData,
+      appData,
       formComponent,
 
       ...childProps // pass on everything else
@@ -240,17 +242,17 @@ class FormInput extends Component {
     if (this.props.type === 'radio' || this.props.type === 'select') {
       injectProps.options = values
       injectProps.values = values
-      injectProps.value = getValue(this.props.formData, id)
+      injectProps.value = getValue(this.props.appData, id)
     } else if (this.props.type === 'checkbox') {
       injectProps.values = values
       injectProps.options = values
-      injectProps.value = getValue(this.props.formData, id) || []
+      injectProps.value = getValue(this.props.appData, id) || []
     } else {
-      let value = getValue(this.props.formData, id)
+      let value = getValue(this.props.appData, id)
       value = value === undefined ? '' : value.toString()
       injectProps.value = value
     }
-    injectProps.errorText = this.props.disabled ? undefined : getDisplayError(this.props.formData, id)
+    injectProps.errorText = this.props.disabled ? undefined : getDisplayError(this.props.appData, id)
     injectProps.errorBoolean = (typeof injectProps.errorText === 'string' && injectProps.errorText.length > 0)
     return (
       <this.props.formComponent
@@ -273,7 +275,7 @@ FormInput.propTypes = {
   onChange: PropTypes.func,
   onSelect: PropTypes.func,
   type: PropTypes.string, // checkbox or radio or select
-  formData: PropTypes.object.isRequired,
+  appData: PropTypes.object.isRequired,
   disabled: PropTypes.bool,
   submitValidation: PropTypes.oneOfType([
     PropTypes.func,
@@ -308,7 +310,7 @@ FormInput.defaultProps = {
 
 function mapStateToProps(store) {
   return {
-    formData: store.appData
+    appData: store.appData
   }
 }
 

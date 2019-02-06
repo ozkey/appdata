@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
-import { changeValue, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
+import { changeValue, normalizeAndValidate, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
 
 import CardsFormCheckbox from './miniExamples/CardsFormCheckbox'
 import CardsFormRadio from './miniExamples/CardsFormRadio'
@@ -65,13 +65,21 @@ class App extends Component {
         >
           not agree
         </Button>
-
+        <Button onClick={() => {
+          this.props.dispatch(normalizeAndValidate())
+        }}
+        >
+          normalizeAndValidate
+        </Button>
         <Button onClick={() => {
           this.props.dispatch(setSubmitErrorForDisplay())
         }}
         >
           setSubmitErrorForDisplay!
         </Button>
+
+
+
       </DataController >
     )
   }

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
@@ -61,11 +60,4 @@ FormInput.defaultProps = {
   value: undefined
 }
 
-
-function mapStateToProps(store) {
-  return {
-    formData: store.appData
-  }
-}
-
-export default connect(mapStateToProps)(FormInput)
+export default (FormInput)

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
@@ -9,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 
 const FormInput = (props) => {
-  const {name, id, value, onChange, errorBoolean, errorText, options, disabled, label} = props
+  const {name, id, onChange, errorBoolean, errorText, options, disabled, label} = props
   // { label: 'one', value: 1, disabled: false },
   const listItems = options.map((option) => {
     return (
@@ -54,11 +53,4 @@ FormInput.defaultProps = {
   value: undefined
 }
 
-
-function mapStateToProps(store) {
-  return {
-    appData: store.appData
-  }
-}
-
-export default connect(mapStateToProps)(FormInput)
+export default FormInput

@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 
 import rootReducer, { initState } from '../../redux/appDataReducer'
-import FormRadioController from '../FormRadioController'
-import FormRadio from '../../../exampleApp/components/FormRadio'
+import FormCheckboxController from '../FormCheckboxController'
+import FormCheckbox from '../../../exampleApp/components/FormCheckbox'
 
 
 const realStore = createStore(rootReducer, initState)
@@ -14,10 +14,10 @@ describe(' form input ', () => {
   it('set value', () => {
     const wrapper = mount(
       <Provider store={realStore}>
-        <FormRadioController
+        <FormCheckboxController
           name="theName"
           path="thePath"
-          formComponent={FormRadio}
+          formComponent={FormCheckbox}
           values={[
             { label: '5', value: 5, disabled: false },
             { label: '10', value: 10, disabled: false },
@@ -30,12 +30,13 @@ describe(' form input ', () => {
     )
     const expectedValue = {
       thePath: {
-        theName: 5
+        theName: [5]
       }
     }
 
+
     expect(wrapper.find('input')).toHaveLength(5)
-    wrapper.find('input').first().simulate('change', { target: { checked: true, value: 5 } })
+    wrapper.find('input').first().simulate('change', { target: { value: 5 } })
     wrapper.update()
     expect(realStore.getState().value).toEqual(expectedValue)
   })

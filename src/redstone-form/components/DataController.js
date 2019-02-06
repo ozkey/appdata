@@ -43,7 +43,7 @@ DataController.defaultProps = {
 
 function mapStateToProps(store) {
   return {
-    formData: store.appData
+    appData: store.appData
   }
 }
 

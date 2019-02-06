@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
@@ -55,16 +54,4 @@ const CardsFormRadio = () => {
   )
 }
 
-CardsFormRadio.propTypes = {
-}
-
-CardsFormRadio.defaultProps = {
-}
-
-function mapStateToProps(store) {
-  return {
-    formData: store.appData
-  }
-}
-
-export default connect(mapStateToProps)(CardsFormRadio)
+export default CardsFormRadio
