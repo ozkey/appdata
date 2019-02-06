@@ -14,7 +14,7 @@ const FormInput = (props) => {
   const listItems = options.map((option) => {
     return (
       <FormControlLabel
-        key={id}
+        key={`${id}-${option.value}`}
         value={`${option.value}`} // convert to string - material component expects string only
         disabled={disabled || option.disabled}
         control={<Radio />}

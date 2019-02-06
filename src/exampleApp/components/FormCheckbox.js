@@ -7,13 +7,13 @@ import FormControl from '@material-ui/core/FormControl'
 import Checkbox from '@material-ui/core/Checkbox'
 
 
-const FormInput = (props) => {
+const FormCheckbox = (props) => {
   const {name, id, onChange, errorBoolean, errorText, options, disabled, label} = props
   // { label: 'one', value: 1, disabled: false },
   const listItems = options.map((option) => {
     return (
       <FormControlLabel
-        key={id}
+        key={`${id}-${option.value}`}
         onChange={onChange}
         value={`${option.value}`} // convert to string - material component expects string only
         disabled={disabled || option.disabled}
@@ -33,7 +33,7 @@ const FormInput = (props) => {
   )
 }
 
-FormInput.propTypes = {
+FormCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   errorBoolean: PropTypes.bool.isRequired,
@@ -41,16 +41,11 @@ FormInput.propTypes = {
   id: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
+  disabled: PropTypes.bool.isRequired
 }
 
-FormInput.defaultProps = {
-  errorText: undefined,
-  value: undefined
+FormCheckbox.defaultProps = {
+  errorText: undefined
 }
 
-export default FormInput
+export default FormCheckbox

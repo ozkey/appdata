@@ -23,7 +23,6 @@ FormCheckboxController.propTypes = {
     PropTypes.func,
     PropTypes.object
   ]).isRequired,
-  value: PropTypes.array.isRequired,
   values: PropTypes.array,
   dispatch: PropTypes.func.isRequired,
   onChange: PropTypes.func,

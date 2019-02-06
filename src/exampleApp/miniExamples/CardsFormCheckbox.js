@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import FormCheckboxController from '../../redstone-form/components/FormCheckboxController'
 
 import FormCheckbox from '../components/FormCheckbox'
-import { numberNormalizer } from '../../redstone-form/normalizers/numberNormalizer'
+// import { numberNormalizer } from '../../redstone-form/normalizers/numberNormalizer'
 
 
 import { mustBeDefined } from '../../redstone-form/validators/mustBeDefined'

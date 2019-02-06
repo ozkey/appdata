@@ -35,7 +35,7 @@ class DataController extends Component {
 
 DataController.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 DataController.defaultProps = {
