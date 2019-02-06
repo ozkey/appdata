@@ -16,13 +16,11 @@ import { cleanupEmptyParentsRecursively } from './utils/cleanupEmptyParentsRecur
 
 export const initState = {
   value: {},
-  appData: {},
   inlineError: {},
   onBlurError: {},
   onBlurErrorWorkingData: {},
   submitError: {},
   submitErrorWorkingData: {},
-  app: {}
 }
 
 /* The reducer */

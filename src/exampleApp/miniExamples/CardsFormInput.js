@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography'
 import FormInputController from '../../redstone-form/components/FormInputController'
 
 import { numberNormalizer } from '../../redstone-form/normalizers/numberNormalizer'
-import { setSubmitErrorForDisplay } from '../../redstone-form/redux/appDataActions'
 import FormInput from '../components/FormInput'
 import { mustBeDefined } from '../../redstone-form/validators/mustBeDefined'
 import { greaterThan } from '../../redstone-form/validators/greaterThan'

@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
-import { changeStore, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
+import { changeValue, setSubmitErrorForDisplay } from '../redstone-form/redux/appDataActions'
 
 import CardsFormCheckbox from './miniExamples/CardsFormCheckbox'
 import CardsFormRadio from './miniExamples/CardsFormRadio'
@@ -53,17 +53,17 @@ class App extends Component {
         <br />
 
         <Button onClick={() => {
-          this.props.dispatch(changeStore('path', 'name', 'myValue'))
+          this.props.dispatch(changeValue('path', 'name', 'agree'))
         }}
         >
-          x
+          agree
         </Button>
 
         <Button onClick={() => {
-          this.props.dispatch(changeStore('path', 'name', 'not myValue'))
+          this.props.dispatch(changeValue('path', 'name', 'not agree'))
         }}
         >
-          y
+          not agree
         </Button>
 
         <Button onClick={() => {

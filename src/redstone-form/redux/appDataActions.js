@@ -32,13 +32,6 @@ export const changeValue = (_path, name, value) => ({
   value
 })
 
-export const changeApp = (_path, name, value) => ({
-  type: CHANGE_APP,
-  path: _path === undefined ? 'app' : `app.${_path}`,
-  name,
-  value
-})
-
 export const changeInlineError = (_path, name, _value) => {
   const value = _value === false ? undefined : _value
   return ({

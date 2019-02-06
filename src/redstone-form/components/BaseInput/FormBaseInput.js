@@ -212,6 +212,7 @@ class FormInput extends Component {
   }
 
   render() {
+    // remove props we dont want to give to the child component
     const {
       onChange,
       values,
@@ -224,7 +225,7 @@ class FormInput extends Component {
       formData,
       formComponent,
 
-      ...childProps
+      ...childProps // pass on everything else
     } = this.props
 
     const id = this.getId()

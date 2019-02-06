@@ -5,7 +5,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
-import RadioGroup from '@material-ui/core/RadioGroup'
 import Checkbox from '@material-ui/core/Checkbox'
 
 
@@ -16,10 +15,7 @@ const FormInput = (props) => {
     return (
       <FormControlLabel
         key={id}
-
         onChange={onChange}
-
-        
         value={`${option.value}`} // convert to string - material component expects string only
         disabled={disabled || option.disabled}
         control={<Checkbox />}
@@ -61,7 +57,7 @@ FormInput.defaultProps = {
 
 function mapStateToProps(store) {
   return {
-    formData: store.appData
+    appData: store.appData
   }
 }
 
