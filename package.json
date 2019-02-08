@@ -1,5 +1,5 @@
 {
-  "name": "@redstone/redstone-form",
+  "name": "@ozkey/appdata",
   "version": "0.0.1",
   "private": false,
   "author": "Ozkey",
@@ -43,9 +43,12 @@
     "test-watchAll": "cross-env NODE_ENV=unit-test jest --no-cache --watchAll",
     "============================= BUILD TOOLS  =============================": "",
     "cleanPublish": "rm -rf publish",
-    "cleanPublisWindows": "rmdir publish /s /q",
+    "cleanPublishWindows": "rmdir publish /s /q",
     "cleanBuildWindows": "rmdir build /s /q",
     "build:es2015": "babel --presets es2015,stage-0 --plugins transform-react-jsx -d publish src/redstone-form",
+    "build:pkg": "copy package.json \"publish/package.json\" && copy README.md \"publish/\"",
+    "buildAndPublishDryRun": "npm run test && npm run build:es2015 && npm run build:pkg && cd publish && npm publish --dry-run ",
+    "buildAndPublish": "npm run test && npm run build:es2015 && npm run build:pkg && cd publish && npm publish --access=public",
     "============================= OTHER TOOLS  =============================": "",
     "killWin": "Taskkill /IM node.exe /F",
     "============================= END  =============================": ""
