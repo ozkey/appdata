@@ -55,6 +55,7 @@
   },
   "jest": {
     "verbose": false,
+    "testURL": "http://localhost",
     "testRegex": "((\\.|/)(spec))\\.jsx?$",
     "collectCoverage": true,
     "coverageDirectory": "./build/coverage",
